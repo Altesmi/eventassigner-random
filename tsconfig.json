@@ -6,6 +6,6 @@
       "outDir": "./lib",
       "strict": true
     },
-    "include": ["src"],
+    "include": ["src", ".eslintrc.js"],
     "exclude": ["node_modules", "**/__tests__/*"]
   }
