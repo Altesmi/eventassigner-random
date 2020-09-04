@@ -6,6 +6,6 @@
       "outDir": "./lib",
       "strict": true
     },
-    "include": ["src", ".eslintrc.js"],
-    "exclude": ["node_modules", "**/__tests__/*"]
+    "include": ["**/*.js", "**/*.ts", ".eslintrc.js", "jest.config.js"],
+    "exclude": ["node_modules"]
   }

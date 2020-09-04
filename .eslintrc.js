@@ -20,8 +20,6 @@ module.exports = {
     'eslint-config-prettier/@typescript-eslint',
     'plugin:eslint-plugin-eslint-comments/recommended',
     'plugin:eslint-plugin-jest/recommended',
-    'plugin:eslint-plugin-node/recommended',
-    'plugin:eslint-plugin-promise/recommended',
     'plugin:eslint-plugin-import/errors',
     'plugin:eslint-plugin-import/typescript',
   ],
