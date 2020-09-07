@@ -2,8 +2,13 @@ import { Group } from './typings/group';
 import { Event } from './typings/event';
 import { id } from './typings/id';
 
-function countPlayersInEvent(groups: Group[], events: Event[], eventId: id): number {
+export function countPlayersInEvent(groups: Group[], events: Event[], eventId: id): number {
 	const eInd: number = events.findIndex((e) => e.id === eventId);
+	// return -1 if the event was not found
+	if (eInd === -1) {
+		return -1;
+	}
+
 	// return 0 if there are no groups in the event
 	if (events[eInd].groups.length === 0) {
 		return 0;
@@ -16,5 +21,3 @@ function countPlayersInEvent(groups: Group[], events: Event[], eventId: id): num
 
 	return playerCount;
 }
-
-module.exports = { countPlayersInEvent };

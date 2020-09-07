@@ -1,5 +1,7 @@
+import { id } from './id';
+
 export interface Group {
-	id: number | string;
+	id: id;
 	size: number;
 	pref: number[] | string[];
 }

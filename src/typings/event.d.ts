@@ -1,6 +1,6 @@
 import { id } from './id';
 export interface Event {
-	id: number | string;
+	id: id;
 	min: number;
 	max: number;
 	groups: id[];
