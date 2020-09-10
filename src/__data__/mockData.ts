@@ -77,4 +77,5 @@ export const mockData: Input = {
 			gain: 1,
 		},
 	],
+	updateL: (input) => input.L,
 };
