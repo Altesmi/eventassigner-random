@@ -1,4 +1,3 @@
-import { copyFile } from 'fs';
 import { checkInput } from '../checkInput';
 import { mockData } from '../__data__/mockData';
 
@@ -13,5 +12,5 @@ describe('checkInputs', () => {
 		const result = checkInput(testData);
 		expect(result.value).toEqual(0);
 		expect(result.msg.length).not.toEqual(0);
-    });
+	});
 });
