@@ -65,7 +65,37 @@ export function checkInput(input: Input): CheckResult {
 		}
 	}
 
-	// Check that  updateL exists
+	// check that L (list) exists
+	if (typeof input.L === 'undefined') {
+		result.msg = `input has no L (list)`;
+		return result;
+	}
+
+	// Check that list elements have id, size, event, gain
+	for (let ind = 0; ind < input.L.length; ind += 1) {
+		if (
+			typeof input.L[ind].id === 'undefined' ||
+			typeof input.L[ind].size === 'undefined' ||
+			typeof input.L[ind].gain === 'undefined'
+		) {
+			result.msg = `List element in index ${ind} is missing min, id, size or gain`;
+			return result;
+		}
+
+		// Check that the event field maps to an actual event and that it is included in
+		// the groups preferences
+		if (input.events.filter((ele) => ele.id === input.L[ind].event).length === 0) {
+			result.msg = `event field in List element in index ${ind} does not map to any event in events array`;
+			return result;
+		}
+
+		const groupInd: number = input.groups.findIndex((ele) => ele.id === input.L[ind].id);
+
+		if (!input.groups[groupInd].pref.includes(input.L[ind].event)) {
+			result.msg = `Event field in List element in index ${ind} is not included in the groups preferences`;
+		}
+	}
+	// Check that updateL exists
 	if (typeof input.updateL !== 'function') {
 		result.msg = `Input has no updateL function`;
 		return result;
