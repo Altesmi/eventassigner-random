@@ -5,3 +5,9 @@ export interface Group {
 	size: number;
 	pref: id[];
 }
+
+export interface AssignedGroup {
+	id: id;
+	size?: number;
+	assignment: id;
+}
