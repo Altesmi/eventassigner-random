@@ -23,7 +23,6 @@ export function eventAssignment(input: Input): AssignmentElement[] | CheckResult
 			bestAssignment = newAssignment;
 		}
 	}
-
 	const assignmentCheck = checkAssignment(bestAssignment, input.events, input.groups);
 
 	if (assignmentCheck.value === 0) {

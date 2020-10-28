@@ -52,9 +52,12 @@ export function checkAssignment(assignment: AssignmentElement[], events: Event[]
 		g.pref.forEach((gPref) => {
 			const eInd = events.findIndex((e) => e.id === gPref);
 			const numPlayers = countPlayersInEvent(groups, events, gPref);
-			if (numPlayers + g.size > events[eInd].max || g.size < events[eInd].min) {
-				result.value = 0;
-				result.msg = result.msg.concat(`Group ${g.id} could fit to pref ${gPref};`);
+			const assignmentInd = assignment.findIndex((ele) => ele.id === g.id);
+			if (assignment[assignmentInd].assignment === -1) {
+				if (numPlayers + g.size < events[eInd].max || g.size >= events[eInd].min) {
+					result.value = 0;
+					result.msg = result.msg.concat(`Group ${g.id} could fit to pref ${gPref};`);
+				}
 			}
 		});
 	});
