@@ -78,4 +78,5 @@ export const mockData: Input = {
 		},
 	],
 	updateL: (input) => input.L,
+	assignmentRounds: 100,
 };

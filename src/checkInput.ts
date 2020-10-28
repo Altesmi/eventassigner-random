@@ -101,6 +101,13 @@ export function checkInput(input: Input): CheckResult {
 		return result;
 	}
 
+	// Check that assignmentRounds exists
+
+	if (typeof input.assignmentRounds !== 'number') {
+		result.msg = `Input has no assignmentRounds`;
+		return result;
+	}
+
 	// everything is ok
 	result.value = 1;
 	result.msg = `Input ok`;

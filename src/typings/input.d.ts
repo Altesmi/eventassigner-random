@@ -9,6 +9,7 @@ export interface Input {
 	events: Event[];
 	L: ListElement[];
 	updateL: (input: updateLInput) => ListElement[];
+	assignmentRounds: number;
 }
 
 export interface updateLInput {
