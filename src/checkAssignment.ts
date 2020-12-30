@@ -1,4 +1,3 @@
-import { countPlayersInEvent } from './countPlayersInEvent';
 import { AssignmentElement } from './typings/assignment';
 import { Group, AssignedGroup } from './typings/group';
 import { Event } from './typings/event';
@@ -51,10 +50,17 @@ export function checkAssignment(assignment: AssignmentElement[], events: Event[]
 	groups.forEach((g) => {
 		g.pref.forEach((gPref) => {
 			const eInd = events.findIndex((e) => e.id === gPref);
-			const numPlayers = countPlayersInEvent(groups, events, gPref);
+			const numPlayers = assignment.reduce((total, ele) => {
+				if (ele.assignment === gPref) {
+					const groupInd = groups.findIndex((e) => e.id === ele.id);
+					return total + groups[groupInd].size;
+				} else {
+					return total;
+				}
+			}, 0);
 			const assignmentInd = assignment.findIndex((ele) => ele.id === g.id);
 			if (assignment[assignmentInd].assignment === -1) {
-				if (numPlayers + g.size < events[eInd].max || g.size >= events[eInd].min) {
+				if (numPlayers + g.size <= events[eInd].max && numPlayers + g.size >= events[eInd].min) {
 					result.value = 0;
 					result.msg = result.msg.concat(`Group ${g.id} could fit to pref ${gPref};`);
 				}

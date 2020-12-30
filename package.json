@@ -1,20 +1,28 @@
 {
   "name": "eventassigner-random",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Assigns groups/playes to events based on their preferences randomly multiple times and picks the best assignment.",
-  "main": "index.js",
+  "main": "lib/eventAssignment.js",
+  "types": "lib/evntAssignment.d.ts",
+  "keywords": ["event", "assignment", "random", "optimization"],
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean && npm run build::js",
+    "clean": "rimraf lib",
+    "build::js": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Altesmi/eventassigner-random.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Olli-Pekka Tikkasalo",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Altesmi/eventassigner-random/issues"
@@ -43,5 +51,7 @@
   "files": [
     "lib/**/*"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  }
 }

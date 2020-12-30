@@ -23,14 +23,15 @@ export function randomAssignment(input: Input): AssignmentElement[] {
 		const totalNumPlayers: number = groupsToThisEvent.reduce((total, ele) => {
 			return total + ele.size;
 		}, 0);
+
 		if (totalNumPlayers < event.min) {
 			continue;
 		}
-
 		let numPlayers = 0;
 		const assignedGroups: Group[] = [];
 		const maxLoops = 10;
 		let numLoops = 0;
+
 		while (numPlayers <= event.max) {
 			const randomInd = Math.round(Math.random() * (groupsToThisEvent.length - 1));
 			if (groupsToThisEvent[randomInd].size + numPlayers <= event.max) {
@@ -40,7 +41,7 @@ export function randomAssignment(input: Input): AssignmentElement[] {
 			} else {
 				numLoops = numLoops + 1;
 			}
-			if (numLoops < maxLoops) {
+			if (numLoops > maxLoops || groupsToThisEvent.length < 1) {
 				break;
 			}
 		}
