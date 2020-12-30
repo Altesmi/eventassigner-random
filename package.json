@@ -1,6 +1,6 @@
 {
   "name": "eventassigner-random",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Assigns groups/playes to events based on their preferences randomly multiple times and picks the best assignment.",
   "main": "lib/eventAssignment.js",
   "types": "lib/evntAssignment.d.ts",
