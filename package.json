@@ -1,10 +1,15 @@
 {
   "name": "eventassigner-random",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Assigns groups/playes to events based on their preferences randomly multiple times and picks the best assignment.",
   "main": "lib/eventAssignment.js",
   "types": "lib/eventAssignment.d.ts",
-  "keywords": ["event", "assignment", "random", "optimization"],
+  "keywords": [
+    "event",
+    "assignment",
+    "random",
+    "optimization"
+  ],
   "scripts": {
     "build": "npm run clean && npm run build::js",
     "clean": "rimraf lib",
