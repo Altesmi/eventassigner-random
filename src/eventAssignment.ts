@@ -17,14 +17,21 @@ export function eventAssignment(input: Input): AssignmentElement[] | CheckResult
 	let bestScore = scoreAssignment(bestAssignment, input.L);
 	for (let i = 1; i < input.assignmentRounds; i++) {
 		const newAssignment = randomAssignment(input);
-		const newScore = scoreAssignment(newAssignment, input.L);
-		if (newScore > bestScore) {
-			bestScore = newScore;
-			bestAssignment = newAssignment;
+		const assignmentCheck = checkAssignment(newAssignment, input.events, input.groups);
+		if (assignmentCheck.value === 0) {
+			continue;
+		} else {
+			const newScore = scoreAssignment(newAssignment, input.L);
+
+			if (newScore > bestScore) {
+				bestScore = newScore;
+				bestAssignment = newAssignment;
+			}
 		}
 	}
-	const assignmentCheck = checkAssignment(bestAssignment, input.events, input.groups);
 
+	// check assignment again if the current assignment is the first assignment before the loop
+	const assignmentCheck = checkAssignment(bestAssignment, input.events, input.groups);
 	if (assignmentCheck.value === 0) {
 		return assignmentCheck;
 	} else {
