@@ -8,5 +8,5 @@
       "typeRoots": ["src/typings","node_modules/@types"]
     },
     "include": ["**/*/*.js", "**/*/*.ts", ".eslintrc.js", "jest.config.js"],
-    "exclude": ["node_modules", "lib"]
+    "exclude": ["node_modules", "lib", "**/__tests__/*", "**/__data__/*"]
   }
