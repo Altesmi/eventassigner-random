@@ -13,9 +13,11 @@ export function eventAssignment(input: Input): AssignmentElement[] | CheckResult
 		return inputCheck;
 	}
 
-	let bestAssignment = randomAssignment(input);
-	let bestScore = scoreAssignment(bestAssignment, input.L);
-	for (let i = 1; i < input.assignmentRounds; i++) {
+	// let bestAssignment = randomAssignment(input);
+	// let bestScore = scoreAssignment(bestAssignment, input.L);
+	let bestScore = -100;
+	let bestAssignment;
+	for (let i = 0; i < input.assignmentRounds; i++) {
 		const newAssignment = randomAssignment(input);
 		const assignmentCheck = checkAssignment(newAssignment, input.events, input.groups);
 		if (assignmentCheck.value === 0) {
@@ -31,10 +33,17 @@ export function eventAssignment(input: Input): AssignmentElement[] | CheckResult
 	}
 
 	// check assignment again if the current assignment is the first assignment before the loop
-	const assignmentCheck = checkAssignment(bestAssignment, input.events, input.groups);
-	if (assignmentCheck.value === 0) {
-		return assignmentCheck;
+	if (bestAssignment == null) {
+		return {
+			value: 0,
+			msg: 'No valid assignment',
+		};
 	} else {
-		return bestAssignment;
+		const assignmentCheck = checkAssignment(bestAssignment, input.events, input.groups);
+		if (assignmentCheck.value === 0) {
+			return assignmentCheck;
+		} else {
+			return bestAssignment;
+		}
 	}
 }

@@ -20,3 +20,8 @@ export interface updateLInput {
 	L: ListElement[];
 	groupId: id;
 }
+
+export interface GroupAndEventData {
+	groups: Group[];
+	events: Event[];
+}

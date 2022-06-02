@@ -1,2 +1,5 @@
 node_modules
 /lib
+src/__data__/konstiData.ts
+src/__tests__/konstiData.test.ts
+*.tgz
