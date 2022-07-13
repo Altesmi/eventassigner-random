@@ -13,13 +13,12 @@ export function eventAssignment(input: Input): AssignmentElement[] | CheckResult
 		return inputCheck;
 	}
 
-	// let bestAssignment = randomAssignment(input);
-	// let bestScore = scoreAssignment(bestAssignment, input.L);
 	let bestScore = -100;
 	let bestAssignment;
 	for (let i = 0; i < input.assignmentRounds; i++) {
 		const newAssignment = randomAssignment(input);
 		const assignmentCheck = checkAssignment(newAssignment, input.events, input.groups);
+
 		if (assignmentCheck.value === 0) {
 			continue;
 		} else {

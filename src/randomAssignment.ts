@@ -32,7 +32,7 @@ export function randomAssignment(input: Input): AssignmentElement[] {
 		const maxLoops = 10;
 		let numLoops = 0;
 
-		while (numPlayers <= event.max) {
+		while (numPlayers < event.max) {
 			const randomInd = Math.round(Math.random() * (groupsToThisEvent.length - 1));
 			if (groupsToThisEvent[randomInd].size + numPlayers <= event.max) {
 				assignedGroups.push(groupsToThisEvent[randomInd]);
